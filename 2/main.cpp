@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "circle.h";
+#include "rational.h"
 
 using namespace std;
 
@@ -7,61 +7,28 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	circle A(0, 0, 0);
-	circle B(0, 0, 0);
-	circle C(0, 0, 0);
+	int size;
+	cout << "Введите количество дробей: "; cin >> size;
+	cout << "\n";
+	rational* arr = new rational[size];
+	int a, b;
 
-	float j1, j2, j3;
-
-	cout << "x, y и радиус окружности A\n";
-	cin >> j1 >> j2 >> j3;
-	A.set_circle(j1, j2, j3);
-
-	cout << "x, y и радиус окружности B\n";
-	cin >> j1 >> j2 >> j3;
-	B.set_circle(j1, j2, j3);
-
-	cout << "x, y и радиус окружности C\n";
-	cin >> j1 >> j2 >> j3;
-	C.set_circle(j1, j2, j3);
-
+	cout << "Вводите числитель и знаменатель через пробел \n";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Дробь номер " << i + 1 << " : ";
+		cin >> a >> b;
+		(arr[i]).set(a, b);
+	}
+	cout << "\n";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "\nВывод дроби " << i + 1 << " : ";
+		(arr[i]).show();
+	}
 	cout << "\n";
 
-	cout << "Площадь окружности A - " << A.square() << "\n";
-	cout << "Площадь окружности B - " << B.square() << "\n";
-	cout << "Площадь окружности C - " << C.square() << "\n";
-
-	float R, X, Y;
-	circle D(0, 0, 0);
-	cout << "x, y и радиус окружности \n";
-	cin >> R >> X >> Y;
-
-	D.set_circle(R, X, Y);
-	if (B.check_circle(R, X, Y)) cout << "Окружности пересекаются\n";
-	else cout << "Окружности не пересекаются\n";
-
-	float a, b, c;
-
-	cout << "Введите треугольник (a,b,c)\n";
-	cin >> a >> b >> c;
-
-	if (A.triangle_around(a, b, c)) cout << "Окружность A можно вписать треугольник\n";
-	else cout << "Окружность A нельзя вписать треугольник\n";
-
-	if (B.triangle_around(a, b, c)) cout << "Окружность B можно вписать треугольник\n";
-	else cout << "Окружность B нельзя вписать треугольник\n";
-
-	if (C.triangle_around(a, b, c)) cout << "Окружность C можно вписать треугольник\n";
-	else cout << "Окружность C нельзя вписать треугольник\n";
-
-	if (A.triangle_in(a, b, c)) cout << "В окружность A можно вписать треугольник\n";
-	else cout << "В окружность A нельзя вписать треугольник\n";
-
-	if (B.triangle_in(a, b, c)) cout << "В окружность B можно вписать треугольник\n";
-	else cout << "В окружность B нельзя вписать треугольник\n";
-
-	if (C.triangle_in(a, b, c)) cout << "В окружность C можно вписать треугольник\n";
-	else cout << "В окружность C нельзя вписать треугольник\n";
+	delete[] arr;
 
 	return 0;
 }
